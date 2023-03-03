@@ -31,18 +31,21 @@ List<String> itemNames = new ArrayList<>();
 //        tv =  findViewById(R.id.tvout);
 //        tv.setText("");
 //
-//        Collections.sort(dataItemList, new Comparator<DataItem>() {
-//            @Override
-//            public int compare(DataItem o1, DataItem o2) {
-//                return o1.getItemName().compareTo(o2.getItemName());
-//            }
-//        });
-        for (DataItem item: dataItemList) {
-//            tv.append(item.getItemName() +"\n");
-            itemNames.add(item.getItemName());
-        }
-        Collections.sort(itemNames);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1, itemNames);
+        Collections.sort(dataItemList, new Comparator<DataItem>() {
+            @Override
+            public int compare(DataItem o1, DataItem o2) {
+                return o1.getItemName().compareTo(o2.getItemName());
+            }
+        });
+//        for (DataItem item: dataItemList) {
+////            tv.append(item.getItemName() +"\n");
+//            itemNames.add(item.getItemName());
+//        }
+//        Collections.sort(itemNames);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1, itemNames);
+
+        //use our new adapter
+        DataItemAdapter adapter = new DataItemAdapter(this, dataItemList);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
