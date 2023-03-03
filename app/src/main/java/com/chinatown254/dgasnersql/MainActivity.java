@@ -3,6 +3,9 @@ package com.chinatown254.dgasnersql;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.chinatown254.dgasnersql.model.DataItem;
@@ -39,5 +42,8 @@ List<String> itemNames = new ArrayList<>();
             itemNames.add(item.getItemName());
         }
         Collections.sort(itemNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1, itemNames);
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
     }
 }
